@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todoer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+            <h1>Todo<span>lister</span></h1>
+    </header>
+    <main>
+        <div class="todoElements">
+            <input type="text" placeholder="Add task..." class="js-todo-input todo-input">
+            <button class="js-addTodo add-todo">Add</button>
+        </div>
+        <div class="todoDisplay">
+            <div class="js-todos listOfTodos"></div>
+        </div>
+        <div class="js-add-popUp popUp">
+            <div class="cat-image">
+                <img src="images/_-Photoroom.png" alt="cat">
+            </div>
+            <p>Please add a name to your todo.</p>
+            <button class="js-ok">Ok</button>
+        </div>
+    </main>
+    <script src="todoList.js"></script>
+</body>
+</html>
