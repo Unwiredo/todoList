@@ -12,16 +12,17 @@
     </header>
     <main>
         <div class="todoElements">
-            <input type="text" placeholder="Add task..." class="js-todo-input todo-input">
+            <input name="todoInput" type="text" placeholder="Add task..." class="js-todo-input todo-input">
             <button class="js-addTodo add-todo">Add</button>
+        </div>
+        <div class="js-current-date currentDate-container">
         </div>
         <div class="todoDisplay">
             <div class="js-todos listOfTodos"></div>
         </div>
         <div class="popUp-container">
-            
         </div>
     </main>
-    <script src="todoList.js"></script>
+    <script src="todoList.js" type="module"></script>
 </body>
 </html>

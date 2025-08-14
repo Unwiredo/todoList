@@ -1,3 +1,9 @@
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+
+
+const today = dayjs();
+console.log(today.format('dddd, D/MM/YYYY'));
+
 document.querySelector('.js-addTodo')
     .addEventListener('click', () => {
         todoListInstance.addTodo();
@@ -9,6 +15,9 @@ document.querySelector('.js-todo-input')
             todoListInstance.addTodo();
         }
     });
+
+document.querySelector('.js-current-date')
+    .innerHTML = `<p class="currentDate">${today.format('HH:mm dddd, MMM D')}</p>`;
 
 class TodoList {
     todoList = JSON.parse(localStorage.getItem('todos')) || [];
@@ -62,6 +71,8 @@ class TodoList {
                 </div>
             </div>`;
 
+            document.body.style.overflow = 'hidden';
+
             document.querySelector('.popUp-container')
                 .innerHTML = html;
 
@@ -90,10 +101,11 @@ class TodoList {
     }
 
     removeTodoPopup(){
+        document.body.style.overflow = 'visible';
         document.querySelector('.popUp-container')
             .innerHTML = '';
     }
 }
 
 const todoListInstance = new TodoList();
-const date = new Date();
+todoListInstance.renderTodoList();
