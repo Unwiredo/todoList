@@ -1,9 +1,5 @@
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
-
-const today = dayjs();
-console.log(today.format('dddd, D/MM/YYYY'));
-
 document.querySelector('.js-addTodo')
     .addEventListener('click', () => {
         todoListInstance.addTodo();
@@ -15,9 +11,6 @@ document.querySelector('.js-todo-input')
             todoListInstance.addTodo();
         }
     });
-
-document.querySelector('.js-current-date')
-    .innerHTML = `<p class="currentDate">${today.format('HH:mm dddd, MMM D')}</p>`;
 
 class TodoList {
     todoList = JSON.parse(localStorage.getItem('todos')) || [];
@@ -105,7 +98,14 @@ class TodoList {
         document.querySelector('.popUp-container')
             .innerHTML = '';
     }
+
+    updateTime(){
+        const today = dayjs();
+        document.querySelector('.js-current-date')
+            .innerHTML = `<p class="currentDate">${today.format('HH:mm dddd, MMM D')}</p>`;
+     }
 }
 
 const todoListInstance = new TodoList();
 todoListInstance.renderTodoList();
+setInterval(() => todoListInstance.updateTime(), 1000);
