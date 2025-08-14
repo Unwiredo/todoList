@@ -8,7 +8,7 @@ document.querySelector('.js-todo-input')
         if(event.key === 'Enter'){
             todoListInstance.addTodo();
         }
-    })
+    });
 
 class TodoList {
     todoList = JSON.parse(localStorage.getItem('todos')) || [];
@@ -48,7 +48,22 @@ class TodoList {
         const inputElement = document.querySelector('.js-todo-input');
         const name = inputElement.value;
         if(name === ''){
-            this.addTodoMessage();
+            document.querySelector('.popUp-container')
+                .innerHTML = `<div class="js-add-popUp popUp">
+                <div class="cat-image">
+                </div>
+                <div class="popUp-paragraph">
+                    <p>Please add a name to your todo.</p>
+                </div>
+                <div class="popUp-ok">
+                    <button class="js-ok">Ok</button>
+                </div>
+            </div>`;
+
+            document.querySelector('.js-ok')
+                .addEventListener('click', () => {
+                    this.removeTodoPopup();
+            });
         }else{
             this.todoList.push({
             name: name,
@@ -69,8 +84,9 @@ class TodoList {
         localStorage.setItem('todos', JSON.stringify(this.todoList));
     }
 
-    addTodoMessage(){
-        
+    removeTodoPopup(){
+        document.querySelector('.popUp-container')
+            .innerHTML = '';
     }
 }
 
