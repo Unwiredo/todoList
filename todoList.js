@@ -48,17 +48,22 @@ class TodoList {
         const inputElement = document.querySelector('.js-todo-input');
         const name = inputElement.value;
         if(name === ''){
-            document.querySelector('.popUp-container')
-                .innerHTML = `<div class="js-add-popUp popUp">
-                <div class="cat-image">
-                </div>
-                <div class="popUp-paragraph">
-                    <p>Please add a name to your todo.</p>
-                </div>
-                <div class="popUp-ok">
-                    <button class="js-ok">Ok</button>
+            const html = `
+            <div class="popUp-background">
+                <div class="js-add-popUp popUp">
+                    <div class="cat-image">
+                    </div>
+                    <div class="popUp-paragraph">
+                        <p>Please add a name to your todo.</p>
+                    </div>
+                    <div class="popUp-ok">
+                        <button class="js-ok">Ok</button>
+                    </div>
                 </div>
             </div>`;
+
+            document.querySelector('.popUp-container')
+                .innerHTML = html;
 
             document.querySelector('.js-ok')
                 .addEventListener('click', () => {
