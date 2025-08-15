@@ -48,7 +48,7 @@ class TodoList {
 
     addTodo(){
         const inputElement = document.querySelector('.js-todo-input');
-        const name = inputElement.value;
+        const name = inputElement.value.trim();
         if(name === ''){
             const html = `
             <div class="popUp-background">
